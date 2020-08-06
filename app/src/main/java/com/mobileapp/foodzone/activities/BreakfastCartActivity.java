@@ -1,4 +1,4 @@
-package com.mobileapp.foodzone;
+package com.mobileapp.foodzone.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +16,7 @@ import com.foodzone.common.AppConstants;
 import com.foodzone.listeners.UpdateTotalPriceListener;
 import com.foodzone.model.BreakfastDo;
 import com.foodzone.utills.PreferenceUtils;
+import com.mobileapp.foodzone.R;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.mobileapp.foodzone;
+package com.mobileapp.foodzone.activities;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
 import com.foodzone.utills.PreferenceUtils;
+import com.mobileapp.foodzone.R;
 
 import java.lang.reflect.Field;
 import java.util.Calendar;

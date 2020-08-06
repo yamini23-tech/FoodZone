@@ -1,4 +1,4 @@
-package com.mobileapp.foodzone;
+package com.mobileapp.foodzone.activities;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -35,6 +35,7 @@ import com.foodzone.utills.ActionBarDrawerToggle;
 import com.foodzone.utills.DrawerArrowDrawable;
 import com.foodzone.utills.PreferenceUtils;
 import com.google.android.material.snackbar.Snackbar;
+import com.mobileapp.foodzone.R;
 
 import java.util.ArrayList;
 

@@ -1,8 +1,10 @@
-package com.mobileapp.foodzone;
+package com.mobileapp.foodzone.activities;
 
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
+import com.mobileapp.foodzone.R;
 
 public class AboutActivity extends BaseActivity {
 

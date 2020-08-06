@@ -1,8 +1,10 @@
-package com.mobileapp.foodzone;
+package com.mobileapp.foodzone.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.mobileapp.foodzone.R;
 
 public class MainActivity extends AppCompatActivity {
 
