@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linearlayout"
+    android:layout_width="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:layout_height="match_parent">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin_20"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:src="@drawable/save_card" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_6"
+                android:text="@string/enter_card_details"
+                android:textColor="@color/black"
+                android:textSize="@dimen/margin_16"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_30"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textColorHint="@color/dark_gray"
+                app:hintTextAppearance="@style/MyAppearanceBlack">
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:background="@null"
+                    android:ems="10"
+
+                    android:paddingTop="@dimen/margin_8"
+                    android:hint="@string/card_holder_name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/margin_12">
+
+
+                </EditText>
+
+                <View
+                    android:id="@+id/UnderLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.2dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10"
+            android:textColorHint="@color/dark_gray"
+            app:hintTextAppearance="@style/MyAppearanceBlack">
+
+            <EditText
+                android:id="@+id/etCardNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="Card Number"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:paddingTop="@dimen/margin_8"
+
+                android:textSize="@dimen/margin_12">
+
+            </EditText>
+
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="1dp"
+                android:background="@color/black" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10"
+            android:textColorHint="@color/dark_gray"
+            app:hintTextAppearance="@style/MyAppearanceBlack">
+
+            <EditText
+                android:id="@+id/etExpiryDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/expiry_date"
+
+                android:textColor="@color/black"
+                android:paddingTop="@dimen/margin_8"
+
+                android:textSize="@dimen/margin_12">
+
+
+            </EditText>
+
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="1dp"
+                android:background="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10"
+            android:textColorHint="@color/dark_gray"
+            app:hintTextAppearance="@style/MyAppearanceBlack">
+
+            <EditText
+                android:id="@+id/etCVV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="CVV"
+                android:paddingTop="@dimen/margin_8"
+
+                android:textColor="@color/black"
+                android:inputType="textPassword"
+                android:textSize="@dimen/margin_12">
+
+
+            </EditText>
+
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="1dp"
+                android:background="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_12"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cbSaveCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/margin_12"
+                android:text="@string/save_card"
+                android:textColor="@color/black"
+                android:textSize="@dimen/margin_11"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnPay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_40"
+            android:layout_marginRight="@dimen/margin_40"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/orange"
+            android:text="Pay"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/margin_12" />
+
+
+    </LinearLayout>
+
+
+</ScrollView>
+
+
+
+
+
