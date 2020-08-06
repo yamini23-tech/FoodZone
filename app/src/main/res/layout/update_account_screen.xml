@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context="com.foodzone.activities.UpdateAccountActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_50"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:textColorHint="@color/black"
+                app:hintTextAppearance="@style/MyAppearanceBlack">
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:background="@null"
+                    android:ems="10"
+                    android:hint="Name"
+                    android:paddingTop="@dimen/margin_8"
+
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/margin_14">
+
+
+                </EditText>
+
+                <View
+                    android:id="@+id/UnderLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_30"
+            android:textColorHint="@color/black"
+            app:hintTextAppearance="@style/MyAppearanceBlack">
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="Email"
+                android:clickable="false"
+                android:editable="false"
+                android:enabled="false"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:paddingTop="@dimen/margin_8"
+
+                android:textSize="@dimen/margin_14">
+
+            </EditText>
+
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="1dp"
+                android:background="@color/black" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ilPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_30"
+            android:textColorHint="@color/black"
+            app:hintTextAppearance="@style/MyAppearanceBlack">
+
+            <EditText
+                android:id="@+id/etMobileNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="Phone Number"
+                android:clickable="false"
+                android:editable="false"
+                android:enabled="false"
+
+                android:inputType="number"
+                android:maxLength="10"
+                android:paddingTop="@dimen/margin_8"
+                android:textColor="@color/black"
+
+                android:textColorHint="@color/black"
+                android:textSize="@dimen/margin_14">
+
+
+            </EditText>
+
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="1dp"
+                android:background="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_40"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/margin_60"
+            android:layout_marginRight="@dimen/margin_60"
+            android:layout_marginTop="@dimen/margin_100"
+            android:background="@color/darkorange"
+            android:text="Submit"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btnChangePassword"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/margin_60"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginRight="@dimen/margin_60"
+            android:background="@color/darkorange"
+            android:text="Change Password"
+            android:textAllCaps="false"
+            android:visibility="gone"
+            android:textColor="@color/white" />
+
+
+        <Button
+            android:id="@+id/restaurent"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_40"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/margin_60"
+            android:layout_marginRight="@dimen/margin_60"
+            android:layout_marginTop="@dimen/margin_10"
+            android:background="@color/darkorange"
+            android:text="Restaurent"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</LinearLayout>
