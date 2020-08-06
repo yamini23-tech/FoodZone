@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context="com.foodzone.activities.ContactFormActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:textColorHint="@color/black"
+                app:hintTextAppearance="@style/MyAppearanceBlack">
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:background="@null"
+                    android:ems="10"
+                    android:textColorHint="@color/black"
+                    android:hint="Name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/margin_12">
+
+
+                </EditText>
+
+                <View
+                    android:id="@+id/UnderLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_30"
+            android:textColorHint="@color/black"
+            app:hintTextAppearance="@style/MyAppearanceBlack">
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+
+                android:textSize="@dimen/margin_12">
+
+            </EditText>
+
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="1dp"
+                android:background="@color/black" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_30"
+            android:textColorHint="@color/black"
+            app:hintTextAppearance="@style/MyAppearanceBlack">
+
+            <EditText
+                android:id="@+id/etMobileNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="Phone Number"
+                android:maxLength="10"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+
+                android:textSize="@dimen/margin_12">
+
+
+            </EditText>
+
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="1dp"
+                android:background="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_30"
+            android:textColorHint="@color/black"
+            app:hintTextAppearance="@style/MyAppearanceBlack">
+
+            <EditText
+                android:id="@+id/etSubject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="Subject"
+                android:inputType="text"
+                android:textColor="@color/black"
+android:textColorHint="@color/black"
+                android:textSize="@dimen/margin_12">
+
+
+            </EditText>
+
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="1dp"
+                android:background="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <EditText
+            android:id="@+id/etMessage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_90"
+            android:layout_marginTop="@dimen/margin_20"
+            android:gravity="start|top"
+            android:paddingLeft="5dp"
+            android:background="@drawable/tip_et_bg"
+            android:paddingTop="@dimen/margin_5"
+            android:hint="Enter Message" />
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_40"
+            android:layout_marginLeft="@dimen/margin_60"
+            android:layout_marginRight="@dimen/margin_60"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_40"
+            android:background="@color/orange"
+            android:text="Send Message"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_20"
+            android:textSize="@dimen/margin_12"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:text="Buisiness Address: 3020 Old Atlanta Road, Suite #500,"
+            android:textColor="@color/orange" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/margin_12"
+
+            android:text="Cumming,GA-30041 or Call us @ 404-348-4832 or Emailus"
+            android:textColor="@color/orange" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="@dimen/margin_12"
+
+            android:text="@string/app_text1"
+            android:textColor="@color/orange" />
+    </LinearLayout>
+
+</LinearLayout>
