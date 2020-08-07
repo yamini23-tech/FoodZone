@@ -13,10 +13,10 @@ import android.widget.TextView;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.foodzone.R;
-import com.foodzone.database.StorageManager;
-import com.foodzone.model.LoginDo;
-import com.foodzone.model.RegisterDO;
-import com.foodzone.utills.PreferenceUtils;
+import com.mobileapp.foodzone.database.StorageManager;
+import com.mobileapp.foodzone.model.LoginDo;
+import com.mobileapp.foodzone.model.RegisterDO;
+import com.mobileapp.foodzone.utills.PreferenceUtils;
 
 public class LoginActivity extends BaseActivity {
     private EditText etPassword, etEmail;

@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.foodzone.R;
-import com.foodzone.utills.PreferenceUtils;
+import com.mobileapp.foodzone.utills.PreferenceUtils;
 
 ;
 

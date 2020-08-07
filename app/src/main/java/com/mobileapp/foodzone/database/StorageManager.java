@@ -4,7 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
-import com.foodzone.model.RegisterDO;
+
+import com.mobileapp.foodzone.model.RegisterDO;
 
 import java.io.File;
 import java.io.FileInputStream;

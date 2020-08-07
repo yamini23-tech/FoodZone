@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
 import com.foodzone.R;
-import com.foodzone.utills.PreferenceUtils;
+import com.mobileapp.foodzone.utills.PreferenceUtils;
 
 import java.lang.reflect.Field;
 import java.util.Calendar;

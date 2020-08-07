@@ -12,12 +12,12 @@ package com.mobileapp.foodzone.adapter;//package com.foodzone.adapter;
 //
 //
 //import com.foodzone.R;
-//import com.foodzone.activities.CatogoryActivity;
-//import com.foodzone.model.LunchDo;
-//import com.foodzone.widget.Dish;
-//import com.foodzone.widget.DishMenu;
-//import com.foodzone.widget.Cart;
-//import com.foodzone.widget.ShopCartImp;
+//import com.mobileapp.foodzone.activities.CatogoryActivity;
+//import com.mobileapp.foodzone.model.LunchDo;
+//import com.mobileapp.foodzone.widget.Dish;
+//import com.mobileapp.foodzone.widget.DishMenu;
+//import com.mobileapp.foodzone.widget.Cart;
+//import com.mobileapp.foodzone.widget.ShopCartImp;
 //
 //import java.util.ArrayList;
 //

@@ -29,12 +29,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.foodzone.R;
-import com.foodzone.adapter.MenuAdapter;
-import com.foodzone.common.AppConstants;
-import com.foodzone.model.MenuDO;
-import com.foodzone.utills.ActionBarDrawerToggle;
-import com.foodzone.utills.DrawerArrowDrawable;
-import com.foodzone.utills.PreferenceUtils;
+import com.mobileapp.foodzone.adapter.MenuAdapter;
+import com.mobileapp.foodzone.common.AppConstants;
+import com.mobileapp.foodzone.model.MenuDO;
+import com.mobileapp.foodzone.utills.ActionBarDrawerToggle;
+import com.mobileapp.foodzone.utills.DrawerArrowDrawable;
+import com.mobileapp.foodzone.utills.PreferenceUtils;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;

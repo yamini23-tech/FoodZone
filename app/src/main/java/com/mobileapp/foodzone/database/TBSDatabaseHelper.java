@@ -4,7 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.foodzone.database.tables.RegisterUsersTable;
+import com.mobileapp.foodzone.database.tables.RegisterUsersTable;
+
 
 /**
  * Created by VenuAppasani on 11/12/2018.

@@ -16,59 +16,59 @@
 
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name="com.foodzone.activities.MainActivity"
+            android:name="com.mobileapp.foodzone.activities.MainActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name="com.foodzone.activities.DinnerCartActivity"
+            android:name="com.mobileapp.foodzone.activities.DinnerCartActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name="com.foodzone.activities.LunchCartActivity"
+            android:name="com.mobileapp.foodzone.activities.LunchCartActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name="com.foodzone.activities.UpdateAccountActivity"
+            android:name="com.mobileapp.foodzone.activities.UpdateAccountActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name="com.foodzone.activities.BreakfastCartActivity"
+            android:name="com.mobileapp.foodzone.activities.BreakfastCartActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name="com.foodzone.activities.GroceryCartActivity"
+            android:name="com.mobileapp.foodzone.activities.GroceryCartActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name="com.foodzone.activities.AddingCardActivity"
+            android:name="com.mobileapp.foodzone.activities.AddingCardActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name="com.foodzone.activities.LoginActivity"
+            android:name="com.mobileapp.foodzone.activities.LoginActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"
             ></activity>
         <activity
-            android:name="com.foodzone.activities.LunchActivity"
+            android:name="com.mobileapp.foodzone.activities.LunchActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name="com.foodzone.activities.DinnerActivity"
+            android:name="com.mobileapp.foodzone.activities.DinnerActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name="com.foodzone.activities.BreakfastActivity"
+            android:name="com.mobileapp.foodzone.activities.BreakfastActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name="com.foodzone.activities.GroceryActivity"
+            android:name="com.mobileapp.foodzone.activities.GroceryActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name="com.foodzone.activities.RegisterActivity"
+            android:name="com.mobileapp.foodzone.activities.RegisterActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"
             ></activity>
         <activity
-            android:name="com.foodzone.activities.ForgotPasswordActivity"
+            android:name="com.mobileapp.foodzone.activities.ForgotPasswordActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name="com.foodzone.activities.AboutActivity"
+            android:name="com.mobileapp.foodzone.activities.AboutActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name="com.foodzone.activities.ContactFormActivity"
+            android:name="com.mobileapp.foodzone.activities.ContactFormActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name="com.foodzone.activities.SplashActivity"
+            android:name="com.mobileapp.foodzone.activities.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

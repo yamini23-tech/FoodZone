@@ -16,10 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.foodzone.R;
-import com.foodzone.common.AppConstants;
-import com.foodzone.listeners.UpdateCartListener;
-import com.foodzone.model.LunchDo;
-import com.foodzone.utills.PreferenceUtils;
+import com.mobileapp.foodzone.common.AppConstants;
+import com.mobileapp.foodzone.listeners.UpdateCartListener;
+import com.mobileapp.foodzone.model.LunchDo;
+import com.mobileapp.foodzone.utills.PreferenceUtils;
 
 import java.util.ArrayList;
 

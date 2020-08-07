@@ -14,9 +14,9 @@ import android.widget.TextView;
 
 
 import com.foodzone.R;
-import com.foodzone.widget.Dish;
-import com.foodzone.widget.Cart;
-import com.foodzone.widget.ShopCartImp;
+import com.mobileapp.foodzone.widget.Dish;
+import com.mobileapp.foodzone.widget.Cart;
+import com.mobileapp.foodzone.widget.ShopCartImp;
 
 import java.util.ArrayList;
 

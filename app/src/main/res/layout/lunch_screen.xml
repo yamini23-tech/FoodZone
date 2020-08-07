@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#eae5e5"
     android:orientation="vertical"
-    tools:context="com.foodzone.activities.LunchActivity">
+    tools:context="com.mobileapp.foodzone.activities.LunchActivity">
 
 
     <androidx.recyclerview.widget.RecyclerView

@@ -17,9 +17,9 @@ import android.widget.TextView;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.foodzone.R;
-import com.foodzone.database.StorageManager;
-import com.foodzone.model.RegisterDO;
-import com.foodzone.utills.PreferenceUtils;
+import com.mobileapp.foodzone.database.StorageManager;
+import com.mobileapp.foodzone.model.RegisterDO;
+import com.mobileapp.foodzone.utills.PreferenceUtils;
 
 public class RegisterActivity extends BaseActivity {
 

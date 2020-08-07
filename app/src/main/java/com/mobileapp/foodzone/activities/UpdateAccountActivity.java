@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.foodzone.R;
-import com.foodzone.utills.PreferenceUtils;
+import com.mobileapp.foodzone.utills.PreferenceUtils;
 
 
 public class UpdateAccountActivity extends BaseActivity {
