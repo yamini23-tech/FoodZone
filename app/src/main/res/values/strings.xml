@@ -1,3 +1,19 @@
 <resources>
-    <string name="app_name">FoodZone</string>
+    <string name="app_name">Food Zone</string>
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
+    <string name="about_us"> We are an Authentic Indian restaurant with Delicious Food. We have Dinein, Catering and Delivery options.</string>
+    <string name="home">Home (or) Office</string>
+    <string name="city">City</string>
+    <string name="street">House No / Street</string>
+    <string name="add_address">Add Address</string>
+    <string name="enter_card_details">Enter Your Credit Card Details</string>
+    <string name="save_card">Save this Card</string>
+    <string name="city_georgia">Georgia</string>
+    <string name="expiry_date">Expiry Date(MM/YYYY)</string>
+    <string name="card_holder_name">Cardholder\'s Name (As it Appears on Card)</string>
+    <string name="no_address">No Saved Addresses . Please Save One</string>
+    <string name="app_text1">"at foodzone@gmail.com "</string>
+    <string name="apptext2">414-348-4867 or foodzone@gmail.com</string>
+
 </resources>
