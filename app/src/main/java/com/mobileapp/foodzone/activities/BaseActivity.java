@@ -28,6 +28,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.foodzone.R;
 import com.foodzone.adapter.MenuAdapter;
 import com.foodzone.common.AppConstants;
 import com.foodzone.model.MenuDO;
@@ -35,7 +36,6 @@ import com.foodzone.utills.ActionBarDrawerToggle;
 import com.foodzone.utills.DrawerArrowDrawable;
 import com.foodzone.utills.PreferenceUtils;
 import com.google.android.material.snackbar.Snackbar;
-import com.mobileapp.foodzone.R;
 
 import java.util.ArrayList;
 

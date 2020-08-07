@@ -11,12 +11,12 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.foodzone.R;
 import com.foodzone.adapter.BreakfastAdapter;
 import com.foodzone.common.AppConstants;
 import com.foodzone.listeners.UpdateCartListener;
 import com.foodzone.model.BreakfastDo;
 import com.foodzone.utills.PreferenceUtils;
-import com.mobileapp.foodzone.R;
 
 import java.util.ArrayList;
 

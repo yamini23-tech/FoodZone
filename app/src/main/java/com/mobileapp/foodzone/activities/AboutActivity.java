@@ -4,7 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.mobileapp.foodzone.R;
+import com.foodzone.R;
 
 public class AboutActivity extends BaseActivity {
 

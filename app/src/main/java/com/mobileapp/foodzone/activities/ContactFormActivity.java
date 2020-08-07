@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
-import com.mobileapp.foodzone.R;
+import com.foodzone.R;
 
 public class ContactFormActivity extends BaseActivity  {
     private Button btnSendMessage;
