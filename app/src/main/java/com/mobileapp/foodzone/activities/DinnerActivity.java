@@ -7,18 +7,30 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.foodzone.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.mobileapp.foodzone.adapter.DinnerAdapter;
 import com.mobileapp.foodzone.common.AppConstants;
 import com.mobileapp.foodzone.listeners.UpdateCartListener;
 import com.mobileapp.foodzone.model.DinnerDo;
+import com.mobileapp.foodzone.model.LunchDo;
 import com.mobileapp.foodzone.utills.PreferenceUtils;
 
 import java.util.ArrayList;
 
+/**
+ * This class manages dinner related items
+ */
 public class DinnerActivity extends BaseActivity implements UpdateCartListener {
     private RecyclerView recycleview;
     private DinnerAdapter dinnerAdapter;
@@ -26,10 +38,13 @@ public class DinnerActivity extends BaseActivity implements UpdateCartListener {
     public RelativeLayout rlProceed, help;
     int categoryId = 0;
     String imageURL;
-
+    FirebaseFirestore firebaseFirestore;
 
     private RelativeLayout llCategory;
 
+    /**
+     * Initialize with default values
+     */
     @Override
     public void initialize() {
         llCategory = (RelativeLayout) getLayoutInflater().inflate(R.layout.lunch_screen, null);
@@ -82,20 +97,28 @@ public class DinnerActivity extends BaseActivity implements UpdateCartListener {
 
         AppConstants.listDinner = getDinnerDOS();
 
-
     }
 
 
+    /**
+     * Initialize with references and functionalities
+     */
     @Override
     public void initializeControls() {
         recycleview = (RecyclerView) findViewById(R.id.recycleview);
         tvNumber = (TextView) findViewById(R.id.tvNumber);
         rlProceed = (RelativeLayout) findViewById(R.id.rlProceed);
         help = (RelativeLayout) findViewById(R.id.rlHelp);
-
+        firebaseFirestore = FirebaseFirestore.getInstance();
     }
 
 
+    /**
+     * Set the adapter for recyclerview
+     * @param context Application context
+     * @param listDinnerDos List of dinner products
+     * @param imageURL Image URL
+     */
     private void dinnerAdapter(Context context, ArrayList<DinnerDo> listDinnerDos, String imageURL) {
         dinnerAdapter = new DinnerAdapter(context, DinnerActivity.this, listDinnerDos, imageURL);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -105,6 +128,9 @@ public class DinnerActivity extends BaseActivity implements UpdateCartListener {
     }
 
 
+    /**
+     * This is an indicator that the activity became active and ready to receive input. It is on top of an activity stack and visible to user.
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -116,9 +142,26 @@ public class DinnerActivity extends BaseActivity implements UpdateCartListener {
 
     }
 
+    /**
+     * Fetch dinner related details from database
+     * @return list of Dinner items
+     */
     private ArrayList<DinnerDo> getDinnerDOS() {
-        ArrayList<DinnerDo> DinnerDos = new ArrayList<>();
-        DinnerDo p = new DinnerDo();
+        final ArrayList<DinnerDo> DinnerDos = new ArrayList<>();
+
+        firebaseFirestore.collection("Dinner").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful())
+                    for (DocumentSnapshot documentSnapshot : task.getResult()) {
+                        DinnerDo dinnerDo = documentSnapshot.toObject(DinnerDo.class);
+                        DinnerDos.add(dinnerDo);
+                    }
+                dinnerAdapter(DinnerActivity.this, DinnerDos, imageURL);
+            }
+        });
+
+       /* DinnerDo p = new DinnerDo();
         p.id = "1";
 
         p.description = "Chicken Mejestic";
@@ -218,19 +261,23 @@ public class DinnerActivity extends BaseActivity implements UpdateCartListener {
         p.uploadImage = R.drawable.chickenbiryani;
         p.id = "10";
 
-        DinnerDos.add(p);
-
-
+        DinnerDos.add(p);*/
 
         return DinnerDos;
     }
 
+    /**
+     * This method is called to perform any final cleanup before an activity is destroyed
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();
     }
 
 
+    /**
+     * Method to define what happens when native back is pressed
+     */
     @Override
     public void onBackPressed() {
         // close search view on back button pressed
@@ -241,6 +288,9 @@ public class DinnerActivity extends BaseActivity implements UpdateCartListener {
         super.onBackPressed();
     }
 
+    /**
+     * Updates cart size with no of products in cart
+     */
     @Override
     public void updateCartCount() {
         int cartCount = preferenceUtils.getIntFromPreference(PreferenceUtils.CART_COUNT, 0);
