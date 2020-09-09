@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.foodzone.R;
-import com.mobileapp.foodzone.adapter.LunchAdapter;
 import com.mobileapp.foodzone.common.AppConstants;
 import com.mobileapp.foodzone.listeners.UpdateCartListener;
 import com.mobileapp.foodzone.model.LunchDo;
