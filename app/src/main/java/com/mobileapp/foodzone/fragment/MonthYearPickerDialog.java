@@ -15,7 +15,7 @@ import com.foodzone.R;
 import java.util.Calendar;
 
 /**
- * Created by sandy on 4/12/2018.
+ * this class is used to select date
  */
 public class MonthYearPickerDialog extends DialogFragment {
 
