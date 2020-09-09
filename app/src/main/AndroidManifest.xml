@@ -31,16 +31,10 @@
             android:name="com.mobileapp.foodzone.activities.BreakfastCartActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name="com.mobileapp.foodzone.activities.GroceryCartActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity
             android:name="com.mobileapp.foodzone.activities.LoginActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"
             ></activity>
-        <activity
-            android:name="com.mobileapp.foodzone.activities.LunchActivity"
-            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.mobileapp.foodzone.activities.DinnerActivity"
             android:screenOrientation="portrait"></activity>
