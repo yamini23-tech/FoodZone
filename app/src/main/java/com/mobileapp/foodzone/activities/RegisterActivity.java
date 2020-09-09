@@ -21,6 +21,9 @@ import com.mobileapp.foodzone.database.StorageManager;
 import com.mobileapp.foodzone.model.RegisterDO;
 import com.mobileapp.foodzone.utills.PreferenceUtils;
 
+/**
+ * This class deals with user registration
+ */
 public class RegisterActivity extends BaseActivity {
 
 
@@ -38,6 +41,9 @@ public class RegisterActivity extends BaseActivity {
     private CheckBox cbTermsConditions;
 
 
+    /**
+     * Initialize with default values
+     */
     @Override
     public void initialize() {
         llRegister = (ScrollView) getLayoutInflater().inflate(R.layout.register_screen, null);
@@ -99,6 +105,9 @@ public class RegisterActivity extends BaseActivity {
 
     }
 
+    /**
+     * Initialize with references and functionalities
+     */
     @Override
     public void initializeControls() {
         tvScreenTitle.setText("Register");
@@ -139,6 +148,16 @@ public class RegisterActivity extends BaseActivity {
 
     }
 
+    /**
+     * Validate all registration fields
+     * @param userName
+     * @param emailId
+     * @param password
+     * @param confirmPassword
+     * @param phoneNumber
+     * @param isTermsChecked
+     * @return error message if any else returns empty string
+     */
     private String validateRegisteration(String userName, String emailId, String password, String confirmPassword, String phoneNumber, boolean isTermsChecked) {
         String errorMsg = "";
         if (userName.isEmpty()) {
@@ -208,6 +227,9 @@ public class RegisterActivity extends BaseActivity {
 //
 //    }
 
+    /**
+     * This is an indicator that the activity became active and ready to receive input. It is on top of an activity stack and visible to user.
+     */
     @Override
     protected void onResume() {
         super.onResume();
