@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.foodzone.R;
-import com.mobileapp.foodzone.model.MenuDO;
 
 import java.util.List;
 

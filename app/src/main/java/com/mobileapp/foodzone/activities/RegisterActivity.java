@@ -17,7 +17,6 @@ import android.widget.TextView;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.foodzone.R;
-import com.mobileapp.foodzone.model.RegisterDO;
 import com.mobileapp.foodzone.utills.PreferenceUtils;
 
 /**
