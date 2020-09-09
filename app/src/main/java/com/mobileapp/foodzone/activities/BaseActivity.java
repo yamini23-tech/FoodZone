@@ -31,7 +31,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.foodzone.R;
 import com.google.android.material.snackbar.Snackbar;
 import com.mobileapp.foodzone.adapter.MenuAdapter;
-import com.mobileapp.foodzone.common.AppConstants;
 import com.mobileapp.foodzone.model.MenuDO;
 import com.mobileapp.foodzone.utills.ActionBarDrawerToggle;
 import com.mobileapp.foodzone.utills.DrawerArrowDrawable;

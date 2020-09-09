@@ -3,8 +3,7 @@ package com.mobileapp.foodzone.database.tables;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
- * Created by VenuAppasani on 12/12/18.
- * Copyright (C) 2018 TBS - All Rights Reserved
+ * Registers user table
  */
 public class RegisterUsersTable {
 

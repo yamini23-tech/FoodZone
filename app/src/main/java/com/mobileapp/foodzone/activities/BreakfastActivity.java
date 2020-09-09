@@ -18,7 +18,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.mobileapp.foodzone.common.AppConstants;
 import com.mobileapp.foodzone.listeners.UpdateCartListener;
 import com.mobileapp.foodzone.model.BreakfastDo;
 import com.mobileapp.foodzone.utills.PreferenceUtils;

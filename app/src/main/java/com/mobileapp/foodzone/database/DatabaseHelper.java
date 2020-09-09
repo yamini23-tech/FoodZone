@@ -8,8 +8,6 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 
-import com.mobileapp.foodzone.common.AppConstants;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

@@ -8,6 +8,9 @@ import com.mobileapp.foodzone.model.LunchDo;
 
 import java.util.ArrayList;
 
+/**
+ * This class manages all constants used by application
+ */
 public class AppConstants {
 
     public static final int[] menuIcons = {R.drawable.help_icon, R.drawable.rate_icon,
