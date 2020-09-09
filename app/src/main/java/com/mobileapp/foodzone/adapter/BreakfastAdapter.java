@@ -23,6 +23,9 @@ import com.mobileapp.foodzone.utills.PreferenceUtils;
 
 import java.util.ArrayList;
 
+/**
+ * Adapter class for breakfast related items
+ */
 public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.MyViewHolder> /*implements Filterable*/ {
 
     private ArrayList<BreakfastDo> listLunchDos;
@@ -32,6 +35,9 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.MyVi
     private PreferenceUtils preferenceUtils;
 
 
+    /**
+     * The view that need to be st to recycler view
+     */
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView tvProductName, tvPrice, tvDescription,tvNumber;
         public ImageView ivProductImage;
@@ -58,6 +64,12 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.MyVi
         preferenceUtils = new PreferenceUtils(context);
     }
 
+    /**
+     * Called when RecyclerView needs a new RecyclerView.ViewHolder of the given type to represent an item.
+     * @param parent The ViewGroup into which the new View will be added after it is bound to an adapter position.
+     * @param viewType The view type of the new View.
+     * @return Itemholder instance
+     */
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -66,6 +78,11 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.MyVi
         return new MyViewHolder(itemView);
     }
 
+    /**
+     *Called by RecyclerView to display the data at the specified position.
+     * @param holder The ViewHolder which should be updated to represent the contents of the item at the given position
+     * @param position The position of the item within the adapter's data set.
+     */
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final BreakfastDo lunchDo = AppConstants.listBreakfast.get(position);
@@ -83,7 +100,7 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.MyVi
 
                 AppConstants.listBreakfast.get(position).itemCount = AppConstants.listBreakfast.get(position).itemCount + 1;
 //                lunchDo.itemCount = lunchDo.itemCount + 1;
-                holder.tvNumber.setText(""+AppConstants.listBreakfast.get(position).itemCount);
+                holder.tvNumber.setText(""+ AppConstants.listBreakfast.get(position).itemCount);
 
                 int cartCount = getCartCount();
                 preferenceUtils.saveInt(PreferenceUtils.CART_COUNT,cartCount);
@@ -98,7 +115,7 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.MyVi
 
                 if(AppConstants.listBreakfast.get(position).itemCount > 0){
                     AppConstants.listBreakfast.get(position).itemCount = AppConstants.listBreakfast.get(position).itemCount - 1;
-                    holder.tvNumber.setText(""+AppConstants.listBreakfast.get(position).itemCount);
+                    holder.tvNumber.setText(""+ AppConstants.listBreakfast.get(position).itemCount);
                 }
 
                 int cartCount = getCartCount();
@@ -112,11 +129,19 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.MyVi
 
     }
 
+    /**
+     * This method returns the count of items
+     * @return No of items
+     */
     @Override
     public int getItemCount() {
         return AppConstants.listBreakfast.size();
     }
 
+    /**
+     * This method returns the count of items in cart
+     * @return No of items in cart
+     */
     private int getCartCount(){
 
         int cartCount = 0;

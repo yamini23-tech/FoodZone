@@ -15,7 +15,6 @@ import com.foodzone.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.mobileapp.foodzone.adapter.BreakfastCartAdapter;
 import com.mobileapp.foodzone.common.AppConstants;
 import com.mobileapp.foodzone.listeners.UpdateTotalPriceListener;
 import com.mobileapp.foodzone.model.BreakfastDo;
