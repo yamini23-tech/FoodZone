@@ -6,6 +6,9 @@ import java.io.Serializable;
  * Created by sandy on 2/3/2018.
  */
 
+/**
+ * Model file
+ */
 public class LoginDo implements Serializable {
 
     public int status = 0;

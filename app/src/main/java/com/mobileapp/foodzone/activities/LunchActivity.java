@@ -19,7 +19,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.mobileapp.foodzone.adapter.LunchAdapter;
-import com.mobileapp.foodzone.model.LunchDo;
 import com.mobileapp.foodzone.utills.PreferenceUtils;
 
 import java.util.ArrayList;
