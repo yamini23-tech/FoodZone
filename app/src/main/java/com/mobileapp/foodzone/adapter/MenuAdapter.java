@@ -14,6 +14,9 @@ import com.mobileapp.foodzone.model.MenuDO;
 
 import java.util.List;
 
+/**
+ * Adapter class for menu items
+ */
 public class MenuAdapter extends BaseAdapter
 {
 
@@ -25,13 +28,21 @@ public class MenuAdapter extends BaseAdapter
 		this.context       = context;
 		this.listMenu    = listMenu;
 	}
-	
+	/**
+	 * This method returns the count of items in menu
+	 * @return No of items in menu
+	 */
 	@Override
-	public int getCount() 
+	public int getCount()
 	{
 		return listMenu.size();
 	}
 
+	/**
+	 * Get menu item at particular position
+	 * @param position position at which menu item is to be retrieved
+	 * @return MenuItem
+	 */
 	@Override
 	public Object getItem(int position)
 	{
@@ -39,17 +50,17 @@ public class MenuAdapter extends BaseAdapter
 	}
 
 	@Override
-	public long getItemId(int position) 
+	public long getItemId(int position)
 	{
 		return position;
 	}
-    
+
 	public void refreshAdapter(List<MenuDO> listMenu)
 	{
 		this.listMenu = listMenu;
 		notifyDataSetChanged();
 	}
-	
+
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
@@ -74,11 +85,11 @@ public class MenuAdapter extends BaseAdapter
 
 		return convertView;
 	}
-   public class ViewHolder
-   {
-	   TextView tvMenuTitle;
-       ImageView ivMenuIcon;
-	   
-   }
+	public class ViewHolder
+	{
+		TextView tvMenuTitle;
+		ImageView ivMenuIcon;
+
+	}
 
 }

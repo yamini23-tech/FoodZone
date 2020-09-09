@@ -1,6 +1,8 @@
 package com.mobileapp.foodzone.adapter;
 
-
+/**
+ * Created by sandy on 2/7/2018.
+ */
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -115,9 +117,9 @@ public class LunchCartAdapter extends RecyclerView.Adapter<LunchCartAdapter.MyVi
                 if(AppConstants.listCartLunch.get(position).itemCount == 1) {
 
                     for(LunchDo lunchDo1 : AppConstants.listLunch){
-                         if(AppConstants.listCartLunch.get(position).id == lunchDo1.id){
-                             lunchDo1.itemCount = 0;
-                         }
+                        if(AppConstants.listCartLunch.get(position).id == lunchDo1.id){
+                            lunchDo1.itemCount = 0;
+                        }
                     }
                     AppConstants.listCartLunch.remove(position);
                     int cartCount = preferenceUtils.getIntFromPreference(PreferenceUtils.CART_COUNT,0);
@@ -128,8 +130,8 @@ public class LunchCartAdapter extends RecyclerView.Adapter<LunchCartAdapter.MyVi
                     AppConstants.listCartLunch.get(position).itemCount = AppConstants.listCartLunch.get(position).itemCount - 1;
                     holder.tvNumber.setText(""+AppConstants.listCartLunch.get(position).itemCount);
                 }
-                 holder.tvPrice.setText("$"+(Double.parseDouble(String.format("%.2f", lunchDo.price * lunchDo.itemCount))));
-                 listener.updateTotalPrice();
+                holder.tvPrice.setText("$"+(Double.parseDouble(String.format("%.2f", lunchDo.price * lunchDo.itemCount))));
+                listener.updateTotalPrice();
             }
         });
 
