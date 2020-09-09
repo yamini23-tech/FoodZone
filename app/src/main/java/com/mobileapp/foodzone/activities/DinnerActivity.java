@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,9 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.mobileapp.foodzone.adapter.DinnerAdapter;
 import com.mobileapp.foodzone.common.AppConstants;
-import com.mobileapp.foodzone.listeners.UpdateCartListener;
 import com.mobileapp.foodzone.model.DinnerDo;
-import com.mobileapp.foodzone.model.LunchDo;
 import com.mobileapp.foodzone.utills.PreferenceUtils;
 
 import java.util.ArrayList;

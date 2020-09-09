@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.foodzone.R;
-import com.mobileapp.foodzone.listeners.UpdateCartListener;
 import com.mobileapp.foodzone.model.BreakfastDo;
 import com.mobileapp.foodzone.utills.PreferenceUtils;
 
