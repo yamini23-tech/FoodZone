@@ -7,16 +7,23 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.foodzone.R;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.mobileapp.foodzone.utills.PreferenceUtils;
 
 ;
 
+/**
+ * This class deals with dashboard after login screen
+ */
 public class MainActivity extends BaseActivity {
     private ImageView ivLunch, ivDinner, ivParty, ivGrocerry,ivLunchDelivery;
-
+    FirebaseFirestore firebaseFirestore;
     private LinearLayout llMain;
     private String userId;
     private PreferenceUtils preferenceUtils;
+    /**
+     * Initialize with default values
+     */
     @Override
     public void initialize() {
         llMain = (LinearLayout) getLayoutInflater().inflate(R.layout.main_screen, null);
@@ -24,7 +31,7 @@ public class MainActivity extends BaseActivity {
         initializeControls();
         preferenceUtils = new PreferenceUtils(MainActivity.this);
         userId =  preferenceUtils.getStringFromPreference(PreferenceUtils.USER_ID,"");
-
+        loadAllItems();
         llshoppingCartLayout.setVisibility(View.GONE);
         ivLunchDelivery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +78,13 @@ public class MainActivity extends BaseActivity {
         });
     }
 
+    private void loadAllItems() {
+
+    }
+
+    /**
+     * Initialize with references and functionalities
+     */
     @Override
     public void initializeControls() {
 
@@ -82,18 +96,22 @@ public class MainActivity extends BaseActivity {
         ivGrocerry      = (ImageView) findViewById(R.id.ivGrocery);
 
         ivLunchDelivery = (ImageView) findViewById(R.id.ivLunchDelivery);
-
+        firebaseFirestore = FirebaseFirestore.getInstance();
     }
 
 
 
+    /**
+     * Method to override postive button functionality of an alert
+     * @param from the screen it is called from
+     */
     @Override
     public void onButtonYesClick(String from) {
         super.onButtonYesClick(from);
 
         if("SUBMIT_CART".equals(from)){
 
-            Intent intent = new Intent(MainActivity.this,MainActivity.class);
+            Intent intent = new Intent(MainActivity.this, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
 
@@ -104,6 +122,9 @@ public class MainActivity extends BaseActivity {
 
         }
     }
+    /**
+     * This is an indicator that the activity became active and ready to receive input. It is on top of an activity stack and visible to user.
+     */
     @Override
     protected void onResume() {
         super.onResume();
