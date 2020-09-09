@@ -9,13 +9,19 @@ import android.widget.LinearLayout;
 
 import com.foodzone.R;
 
-public class ForgotPasswordActivity extends BaseActivity  {
+/**
+ * This class manages the user credentials reset
+ */
+public class ForgotPasswordActivity extends BaseActivity {
 private Button btnSend;
 private EditText etEmail;
 private LinearLayout llForgotPassword;
 
 
 
+    /**
+     * Initialize with default values
+     */
     @Override
     public void initialize() {
         llForgotPassword = (LinearLayout) getLayoutInflater().inflate(R.layout.forgot_password, null);
@@ -41,14 +47,28 @@ private LinearLayout llForgotPassword;
         });
     }
 
+    /**
+     * Initialize with references and functionalities
+     */
     @Override
     public void initializeControls() {
         etEmail = (EditText)findViewById(R.id.etEmail);
         btnSend = (Button)findViewById(R.id.btnSend);
     }
+
+    /**
+     * Validates the format of email
+     * @param email email provided
+     * @return boolean value as true if format is correct else returns false.
+     */
     private boolean isEmailIdValid(String email){
         return  Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
+    /**
+     * Validations for user details
+     * @param emailId user email
+     * @return Returns error message if any else returns empty String.
+     */
     private String validateForgotPassword(String emailId) {
         String errorMsg ="";
        if(emailId.isEmpty()){
