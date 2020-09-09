@@ -1,8 +1,5 @@
 package com.mobileapp.foodzone.adapter;
 
-/**
- * Created by sandy on 2/7/2018.
- */
 
 import android.content.Context;
 import android.view.LayoutInflater;
