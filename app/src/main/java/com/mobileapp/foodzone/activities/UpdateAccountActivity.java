@@ -12,7 +12,9 @@ import android.widget.Toast;
 import com.foodzone.R;
 import com.mobileapp.foodzone.utills.PreferenceUtils;
 
-
+/**
+ * this class manages any updates to account
+ */
 public class UpdateAccountActivity extends BaseActivity {
     private EditText etName;
     private EditText etEmail;
@@ -27,6 +29,9 @@ public class UpdateAccountActivity extends BaseActivity {
     private Button orderHistory;
     private LinearLayout llUpdateAccount;
 
+    /**
+     * Initialize with default values
+     */
     @Override
     public void initialize() {
         llUpdateAccount = (LinearLayout) getLayoutInflater().inflate(R.layout.update_account_screen, null);
@@ -99,6 +104,9 @@ public class UpdateAccountActivity extends BaseActivity {
         return errorMsg;
     }
 
+    /**
+     * Initialize with references and functionalities
+     */
     @Override
     public void initializeControls() {
         tvScreenTitle.setText("Update Account");
