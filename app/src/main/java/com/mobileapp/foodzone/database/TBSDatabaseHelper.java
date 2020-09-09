@@ -4,10 +4,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.mobileapp.foodzone.database.tables.RegisterUsersTable;
+
 
 /**
- * Created by VenuAppasani on 11/12/2018.
- * Copyright (C) 2018 TBS - All Rights Reserved
+ * Database version related details
  */
 public class TBSDatabaseHelper extends SQLiteOpenHelper {
 

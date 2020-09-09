@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
-
 import com.mobileapp.foodzone.model.RegisterDO;
 
 import java.io.File;
@@ -14,8 +13,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /**
- * Created by Kishore on 12/12/2018.
- * Copyright (C) 2018 TBS - All Rights Reserved
+ * Manages storage related functions
  */
 
 public class StorageManager {
@@ -65,7 +63,7 @@ public class StorageManager {
             if (file.exists()) {
                 FileInputStream fis = new FileInputStream(file);
                 ObjectInputStream is = new ObjectInputStream(fis);
-                RegisterDO RegisterDO = (RegisterDO) is.readObject();
+                RegisterDO RegisterDO = (com.mobileapp.foodzone.model.RegisterDO) is.readObject();
                 is.close();
                 fis.close();
                 return RegisterDO;

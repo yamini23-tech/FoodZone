@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.mobileapp.foodzone.common.AppConstants;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,6 +18,9 @@ import java.io.OutputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+/**
+ * Database helper to manage queries
+ */
 public class DatabaseHelper extends SQLiteOpenHelper
 {
 	
@@ -185,7 +189,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
 						row_obj = new DictionaryEntry[columns.length]; //(columns.length);
 						for(int i=0; i<columns.length; i++)
 						{
-							dir = new DictionaryEntry(); 							
+							dir = new DictionaryEntry();
 							dir.key = columns[i];
 							index = c.getColumnIndex(dir.key);
 							if(dir.key.equals("barcode") ||dir.key.equals("ImageLarge"))
