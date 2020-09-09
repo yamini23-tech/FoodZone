@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-
+/**
+ * This class is for shared preference related utility methods
+ */
 public class PreferenceUtils {
 
     public static String ACCEPT_TERMS = "ACCEPT_TERMS";

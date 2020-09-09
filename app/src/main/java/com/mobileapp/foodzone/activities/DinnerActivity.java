@@ -21,7 +21,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.mobileapp.foodzone.adapter.DinnerAdapter;
 import com.mobileapp.foodzone.common.AppConstants;
 import com.mobileapp.foodzone.model.DinnerDo;
-import com.mobileapp.foodzone.utills.PreferenceUtils;
 
 import java.util.ArrayList;
 

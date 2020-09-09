@@ -11,7 +11,9 @@ import android.graphics.drawable.Drawable;
 
 import com.foodzone.R;
 
-
+/**
+ * This class is for arrow drawable
+ */
 public abstract class DrawerArrowDrawable extends Drawable {
     private static final float ARROW_HEAD_ANGLE = (float) Math.toRadians(45.0D);
     protected float mBarGap;

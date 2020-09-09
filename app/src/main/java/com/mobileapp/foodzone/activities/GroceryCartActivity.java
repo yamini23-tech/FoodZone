@@ -16,7 +16,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.mobileapp.foodzone.adapter.GroceryCartAdapter;
-import com.mobileapp.foodzone.utills.PreferenceUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

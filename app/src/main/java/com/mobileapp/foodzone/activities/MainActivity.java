@@ -8,7 +8,6 @@ import android.widget.LinearLayout;
 
 import com.foodzone.R;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.mobileapp.foodzone.utills.PreferenceUtils;
 
 ;
 

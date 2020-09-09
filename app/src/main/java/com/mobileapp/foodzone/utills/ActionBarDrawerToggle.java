@@ -17,7 +17,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import java.lang.reflect.Method;
 
-
+/**
+ * This class manage to toggle the actionbar drawer for given view
+ */
 public class ActionBarDrawerToggle extends androidx.appcompat.app.ActionBarDrawerToggle {
 
     private static final String TAG = ActionBarDrawerToggle.class.getName();
