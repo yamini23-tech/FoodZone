@@ -2,12 +2,17 @@ package com.mobileapp.foodzone.model;
 
 import java.io.Serializable;
 
+/**
+ * Model file
+ */
 public class BreakfastDo implements Serializable {
 
     public String id            = "";
     public String productName   = "";
-    public int uploadImage   = 0;
+    public String uploadImage   = "";
     public Double price         = 0.00;
     public String description   = "";
     public int itemCount = 0;
+    public String date = "";
+
 }
