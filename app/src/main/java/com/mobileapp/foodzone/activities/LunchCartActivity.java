@@ -12,14 +12,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.foodzone.R;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.mobileapp.foodzone.adapter.LunchCartAdapter;
 import com.mobileapp.foodzone.common.AppConstants;
 import com.mobileapp.foodzone.listeners.UpdateTotalPriceListener;
 import com.mobileapp.foodzone.model.LunchDo;
 import com.mobileapp.foodzone.utills.PreferenceUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
+/**
+ * This class manages grocery items added to cart
+ */
 public class LunchCartActivity extends BaseActivity implements UpdateTotalPriceListener {
     private boolean isFocused;
 
@@ -44,8 +52,11 @@ public class LunchCartActivity extends BaseActivity implements UpdateTotalPriceL
     int categoryId = 0;
     String imageURL = "";
     private LunchCartAdapter lunchCartAdapter;
+    FirebaseFirestore firebaseFirestore;
 
-
+    /**
+     * Initialize with default values
+     */
     @Override
     public void initialize() {
         llOrders = (LinearLayout) getLayoutInflater().inflate(R.layout.lunch_cart_screen, null);
@@ -100,7 +111,20 @@ public class LunchCartActivity extends BaseActivity implements UpdateTotalPriceL
                 public void onClick(View view) {
                     // new CommonBL(LunchCartActivity.this,LunchCartActivity.this).submitCart(userId, categoryId, subTotal, totalPrice, paymentType, deliveryCharges, discountCharges, serviceTax, tip,comment, device, address, transactionId, name, email, mobileNumber, cardId, transactionTag, rememberToken, addressType, orderDetails);
 //                    showLoader();
-                    showAppCompatAlert("Thank You","Order has been placed Successfully..!!","OK","","SUBMIT_CART",false);
+                    String date = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date());
+
+                    for (LunchDo lunchDo : AppConstants.listCartLunch) {
+                        lunchDo.date = date;
+                        firebaseFirestore.collection("Orders")
+                                .add(lunchDo)
+                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    @Override
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        showAppCompatAlert("Thank You","Order has been placed Successfully..!!","OK","","SUBMIT_CART",false);
+                                    }
+                                });
+                    }
+                   // showAppCompatAlert("Thank You","Order has been placed Successfully..!!","OK","","SUBMIT_CART",false);
 
 //                    new CommonBL(LunchCartActivity.this, LunchCartActivity.this).submitCart(userId, String.valueOf(categoryId),
 //                            String.valueOf(productPrice), String.valueOf(total), "1", "0.0", String.valueOf(discount),
@@ -117,6 +141,7 @@ public class LunchCartActivity extends BaseActivity implements UpdateTotalPriceL
 
                     Intent intent = new Intent(LunchCartActivity.this, AddingCardActivity.class);
                     intent.putExtra("CategoryId", categoryId);
+                    intent.putExtra("type", "lunch");
                     startActivity(intent);
                 }
             });
@@ -151,6 +176,9 @@ public class LunchCartActivity extends BaseActivity implements UpdateTotalPriceL
 
 
 
+    /**
+     * Initialize with references and functionalities
+     */
     @Override
     public void initializeControls() {
         tvScreenTitle.setText("Cart");
@@ -167,7 +195,7 @@ public class LunchCartActivity extends BaseActivity implements UpdateTotalPriceL
         tvSubTotal        = (TextView) findViewById(R.id.tvSubTotal);
         tvTax             = (TextView) findViewById(R.id.tvTax);
         tvTotalAmount     = (TextView) findViewById(R.id.tvTotalAmount);
-
+        firebaseFirestore = FirebaseFirestore.getInstance();
     }
 
 
@@ -192,11 +220,18 @@ public class LunchCartActivity extends BaseActivity implements UpdateTotalPriceL
 //
 //    }
 
+    /**
+     * This is an indicator that the activity became active and ready to receive input. It is on top of an activity stack and visible to user.
+     */
     @Override
     protected void onResume() {
 
         super.onResume();
     }
+    /**
+     * Method to override postive button functionality of an alert
+     * @param from the screen it is called from
+     */
     @Override
     public void onButtonYesClick(String from) {
         super.onButtonYesClick(from);
@@ -212,12 +247,20 @@ public class LunchCartActivity extends BaseActivity implements UpdateTotalPriceL
         }
 
     }
-    //===============
+    /**
+     * set cart adapter to recycler view
+     * @param context Application context
+     * @param listLunchDos List of lunch products
+     * @param imageURL Image URL
+     */
     private void setCartAdapter(Context context, ArrayList<LunchDo> listLunchDos, String imageURL) {
         lunchCartAdapter = new LunchCartAdapter(context, LunchCartActivity.this, listLunchDos, imageURL);
         cartRecyclerView.setAdapter(lunchCartAdapter);
     }
 
+    /**
+     * Updates total price of cart according to items added
+     */
     @Override
     public void updateTotalPrice() {
 
