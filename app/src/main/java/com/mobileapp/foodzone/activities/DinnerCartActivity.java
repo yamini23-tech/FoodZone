@@ -12,13 +12,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.foodzone.R;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.mobileapp.foodzone.adapter.DinnerCartAdapter;
 import com.mobileapp.foodzone.listeners.UpdateTotalPriceListener;
 import com.mobileapp.foodzone.model.DinnerDo;
 import com.mobileapp.foodzone.utills.PreferenceUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
+/**
+ * This class manages dinner items added to cart
+ */
 public class DinnerCartActivity extends BaseActivity implements UpdateTotalPriceListener {
     private boolean isFocused;
 
@@ -43,8 +51,11 @@ public class DinnerCartActivity extends BaseActivity implements UpdateTotalPrice
     int categoryId = 0;
     String imageURL = "";
     private DinnerCartAdapter cartAdapter;
+    FirebaseFirestore firebaseFirestore;
 
-
+    /**
+     * Initialize with default values
+     */
     @Override
     public void initialize() {
         llOrders = (LinearLayout) getLayoutInflater().inflate(R.layout.lunch_cart_screen, null);
@@ -78,7 +89,7 @@ public class DinnerCartActivity extends BaseActivity implements UpdateTotalPrice
         updateTotalPrice();
         llshoppingCartLayout.setVisibility(View.GONE);
         preferenceUtils        = new PreferenceUtils(DinnerCartActivity.this);
-         isLoggedIn = preferenceUtils.getbooleanFromPreference(PreferenceUtils.IS_LOGIN, false);
+        isLoggedIn = preferenceUtils.getbooleanFromPreference(PreferenceUtils.IS_LOGIN, false);
 
         if (isLoggedIn) {
 
@@ -99,7 +110,20 @@ public class DinnerCartActivity extends BaseActivity implements UpdateTotalPrice
                 public void onClick(View view) {
                     // new CommonBL(DinnerCartActivity.this,DinnerCartActivity.this).submitCart(userId, categoryId, subTotal, totalPrice, paymentType, deliveryCharges, discountCharges, serviceTax, tip,comment, device, address, transactionId, name, email, mobileNumber, cardId, transactionTag, rememberToken, addressType, orderDetails);
 //                    showLoader();
-                    showAppCompatAlert("Thank You","Order has been placed Successfully..!!","OK","","SUBMIT_CART",false);
+                    String date = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date());
+
+                    for(DinnerDo dinnerDo : AppConstants.listCartDinner) {
+                        dinnerDo.date = date;
+                        firebaseFirestore.collection("Orders")
+                                .add(dinnerDo)
+                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    @Override
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        showAppCompatAlert("Thank You","Order has been placed Successfully..!!","OK","","SUBMIT_CART",false);
+                                    }
+                                });
+                    }
+                    //   showAppCompatAlert("Thank You","Order has been placed Successfully..!!","OK","","SUBMIT_CART",false);
 
 //                    new CommonBL(DinnerCartActivity.this, DinnerCartActivity.this).submitCart(userId, String.valueOf(categoryId),
 //                            String.valueOf(productPrice), String.valueOf(total), "1", "0.0", String.valueOf(discount),
@@ -116,6 +140,7 @@ public class DinnerCartActivity extends BaseActivity implements UpdateTotalPrice
 
                     Intent intent = new Intent(DinnerCartActivity.this, AddingCardActivity.class);
                     intent.putExtra("CategoryId", categoryId);
+                    intent.putExtra("type", "dinner");
                     startActivity(intent);
                 }
             });
@@ -150,6 +175,9 @@ public class DinnerCartActivity extends BaseActivity implements UpdateTotalPrice
 
 
 
+    /**
+     * Initialize with references and functionalities
+     */
     @Override
     public void initializeControls() {
         tvScreenTitle.setText("Cart");
@@ -161,21 +189,28 @@ public class DinnerCartActivity extends BaseActivity implements UpdateTotalPrice
         cartRecyclerView  = (RecyclerView) findViewById(R.id.recycleview);
         tvLogin           = (TextView) findViewById(R.id.tvLogin);
         tvContinue        = (TextView) findViewById(R.id.tvContinue);
-       tvRegister        = (TextView) findViewById(R.id.tvRegister);
+        tvRegister        = (TextView) findViewById(R.id.tvRegister);
 
         tvSubTotal        = (TextView) findViewById(R.id.tvSubTotal);
         tvTax             = (TextView) findViewById(R.id.tvTax);
         tvTotalAmount     = (TextView) findViewById(R.id.tvTotalAmount);
-
+        firebaseFirestore = FirebaseFirestore.getInstance();
     }
 
 
 
+    /**
+     * This is an indicator that the activity became active and ready to receive input. It is on top of an activity stack and visible to user.
+     */
     @Override
     protected void onResume() {
 
         super.onResume();
     }
+    /**
+     * Method to override postive button functionality of an alert
+     * @param from the screen it is called from
+     */
     @Override
     public void onButtonYesClick(String from) {
         super.onButtonYesClick(from);
@@ -191,12 +226,20 @@ public class DinnerCartActivity extends BaseActivity implements UpdateTotalPrice
         }
 
     }
-    //===============
+    /**
+     * set cart adapter to recycler view
+     * @param context Application context
+     * @param listDinnerDos List of dinner products
+     * @param imageURL Image URL
+     */
     private void setCartAdapter(Context context, ArrayList<DinnerDo> listDinnerDos, String imageURL) {
         cartAdapter = new DinnerCartAdapter(context, DinnerCartActivity.this, listDinnerDos, imageURL);
         cartRecyclerView.setAdapter(cartAdapter);
     }
 
+    /**
+     * Updates total price of cart according to items added
+     */
     @Override
     public void updateTotalPrice() {
 
@@ -211,14 +254,14 @@ public class DinnerCartActivity extends BaseActivity implements UpdateTotalPrice
 
 
 
-            tvSubTotal.setText("$" + productPrice);
+        tvSubTotal.setText("$" + productPrice);
 
-            tax = Double.parseDouble(String.format("%.2f", (productPrice / 100) * 7));
+        tax = Double.parseDouble(String.format("%.2f", (productPrice / 100) * 7));
 
-            tvTax.setText("$" + tax);
+        tvTax.setText("$" + tax);
 
-            total = Double.parseDouble(String.format("%.2f", productPrice + tax));
-            tvTotalAmount.setText("$" + total);
+        total = Double.parseDouble(String.format("%.2f", productPrice + tax));
+        tvTotalAmount.setText("$" + total);
 
 
 

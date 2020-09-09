@@ -12,13 +12,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.foodzone.R;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.mobileapp.foodzone.adapter.GroceryCartAdapter;
 import com.mobileapp.foodzone.listeners.UpdateTotalPriceListener;
 import com.mobileapp.foodzone.model.GroceryDo;
 import com.mobileapp.foodzone.utills.PreferenceUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
+/**
+ * This class manages grocery items added to cart
+ */
 public class GroceryCartActivity extends BaseActivity implements UpdateTotalPriceListener {
     private boolean isFocused;
 
@@ -43,8 +51,11 @@ public class GroceryCartActivity extends BaseActivity implements UpdateTotalPric
     int categoryId = 0;
     String imageURL = "";
     private GroceryCartAdapter cartAdapter;
+    FirebaseFirestore firebaseFirestore;
 
-
+    /**
+     * Initialize with default values
+     */
     @Override
     public void initialize() {
         llOrders = (LinearLayout) getLayoutInflater().inflate(R.layout.lunch_cart_screen, null);
@@ -70,7 +81,7 @@ public class GroceryCartActivity extends BaseActivity implements UpdateTotalPric
         //calculate total price.
         if(categoryId==4){
 
-            for (GroceryDo GroceryDo : AppConstants.listCartGrocery) {
+            for (com.mobileapp.foodzone.model.GroceryDo GroceryDo : AppConstants.listCartGrocery) {
                 productPrice = Double.parseDouble(String.format("%.2f", (productPrice + (GroceryDo.price * GroceryDo.itemCount))));
 
             }
@@ -99,7 +110,20 @@ public class GroceryCartActivity extends BaseActivity implements UpdateTotalPric
                 public void onClick(View view) {
                     // new CommonBL(GroceryCartActivity.this,GroceryCartActivity.this).submitCart(userId, categoryId, subTotal, totalPrice, paymentType, deliveryCharges, discountCharges, serviceTax, tip,comment, device, address, transactionId, name, email, mobileNumber, cardId, transactionTag, rememberToken, addressType, orderDetails);
 //                    showLoader();
-                    showAppCompatAlert("Thank You","Order has been placed Successfully..!!","OK","","SUBMIT_CART",false);
+                    String date = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date());
+
+                    for (com.mobileapp.foodzone.model.GroceryDo GroceryDo : AppConstants.listCartGrocery) {
+                        GroceryDo.date = date;
+                        firebaseFirestore.collection("Orders")
+                                .add(GroceryDo)
+                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    @Override
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        showAppCompatAlert("Thank You","Order has been placed Successfully..!!","OK","","SUBMIT_CART",false);
+                                    }
+                                });
+                    }
+                    //showAppCompatAlert("Thank You","Order has been placed Successfully..!!","OK","","SUBMIT_CART",false);
 
 //                    new CommonBL(GroceryCartActivity.this, GroceryCartActivity.this).submitCart(userId, String.valueOf(categoryId),
 //                            String.valueOf(productPrice), String.valueOf(total), "1", "0.0", String.valueOf(discount),
@@ -116,6 +140,7 @@ public class GroceryCartActivity extends BaseActivity implements UpdateTotalPric
 
                     Intent intent = new Intent(GroceryCartActivity.this, AddingCardActivity.class);
                     intent.putExtra("CategoryId", categoryId);
+                    intent.putExtra("type", "groceries");
                     startActivity(intent);
                 }
             });
@@ -150,6 +175,9 @@ public class GroceryCartActivity extends BaseActivity implements UpdateTotalPric
 
 
 
+    /**
+     * Initialize with references and functionalities
+     */
     @Override
     public void initializeControls() {
         tvScreenTitle.setText("Cart");
@@ -166,7 +194,7 @@ public class GroceryCartActivity extends BaseActivity implements UpdateTotalPric
         tvSubTotal        = (TextView) findViewById(R.id.tvSubTotal);
         tvTax             = (TextView) findViewById(R.id.tvTax);
         tvTotalAmount     = (TextView) findViewById(R.id.tvTotalAmount);
-
+        firebaseFirestore = FirebaseFirestore.getInstance();
     }
 
 
@@ -191,11 +219,18 @@ public class GroceryCartActivity extends BaseActivity implements UpdateTotalPric
 //
 //    }
 
+    /**
+     * This is an indicator that the activity became active and ready to receive input. It is on top of an activity stack and visible to user.
+     */
     @Override
     protected void onResume() {
 
         super.onResume();
     }
+    /**
+     * Method to override postive button functionality of an alert
+     * @param from the screen it is called from
+     */
     @Override
     public void onButtonYesClick(String from) {
         super.onButtonYesClick(from);
@@ -204,26 +239,34 @@ public class GroceryCartActivity extends BaseActivity implements UpdateTotalPric
 
 
 
-            Intent intent = new Intent(GroceryCartActivity.this,MainActivity.class);
+            Intent intent = new Intent(GroceryCartActivity.this, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
 
         }
 
     }
-    //===============
+    /**
+     * set cart adapter to recycler view
+     * @param context Application context
+     * @param listGroceryDos List of grocery products
+     * @param imageURL Image URL
+     */
     private void setCartAdapter(Context context, ArrayList<GroceryDo> listGroceryDos, String imageURL) {
         cartAdapter = new GroceryCartAdapter(context, GroceryCartActivity.this, listGroceryDos, imageURL);
         cartRecyclerView.setAdapter(cartAdapter);
     }
 
+    /**
+     * Updates total price of cart according to items added
+     */
     @Override
     public void updateTotalPrice() {
 
         productPrice = 0.00;
         if(categoryId==4){
 
-            for (GroceryDo GroceryDo : AppConstants.listCartGrocery) {
+            for (com.mobileapp.foodzone.model.GroceryDo GroceryDo : AppConstants.listCartGrocery) {
                 productPrice = Double.parseDouble(String.format("%.2f", (productPrice + (GroceryDo.price * GroceryDo.itemCount))));
 
             }

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.foodzone.R;
 import com.mobileapp.foodzone.adapter.LunchCartAdapter;
+import com.mobileapp.foodzone.common.AppConstants;
 import com.mobileapp.foodzone.listeners.UpdateTotalPriceListener;
 import com.mobileapp.foodzone.model.LunchDo;
 import com.mobileapp.foodzone.utills.PreferenceUtils;

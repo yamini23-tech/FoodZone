@@ -18,6 +18,9 @@ import com.mobileapp.foodzone.model.LoginDo;
 import com.mobileapp.foodzone.model.RegisterDO;
 import com.mobileapp.foodzone.utills.PreferenceUtils;
 
+/**
+ * This class deals with user authentication
+ */
 public class LoginActivity extends BaseActivity {
     private EditText etPassword, etEmail;
     private Button btnLogin;
@@ -27,6 +30,9 @@ public class LoginActivity extends BaseActivity {
     ScrollView llLogin;
     private String imageURL;
 
+    /**
+     * Initialize with default values
+     */
     @Override
     public void initialize() {
 
@@ -106,6 +112,12 @@ public class LoginActivity extends BaseActivity {
 
     }
 
+    /**
+     * Validates login detail fields
+     * @param username Login username
+     * @param password Login password
+     * @return error message if any else returns empty string
+     */
     private String validateLogin(String username, String password) {
 
         String errorMsg = "";
@@ -117,6 +129,9 @@ public class LoginActivity extends BaseActivity {
         return errorMsg;
     }
 
+    /**
+     * Initialize with references and functionalities
+     */
     @Override
     public void initializeControls() {
         etEmail = (EditText) findViewById(R.id.etEmail);

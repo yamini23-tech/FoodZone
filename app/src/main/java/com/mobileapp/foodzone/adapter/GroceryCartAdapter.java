@@ -1,8 +1,6 @@
 package com.mobileapp.foodzone.adapter;
 
-/**
- * Created by sandy on 2/7/2018.
- */
+
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -22,6 +20,9 @@ import com.mobileapp.foodzone.utills.PreferenceUtils;
 
 import java.util.ArrayList;
 
+/**
+ * Adapter class for grocery related items added to cart
+ */
 public class GroceryCartAdapter extends RecyclerView.Adapter<GroceryCartAdapter.MyViewHolder> /*implements Filterable*/ {
 
     private ArrayList<GroceryDo> listGroceryDos;
@@ -31,6 +32,9 @@ public class GroceryCartAdapter extends RecyclerView.Adapter<GroceryCartAdapter.
     private PreferenceUtils preferenceUtils;
 
 
+    /**
+     * The view that need to be st to recycler view
+     */
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView tvProductName, tvPrice, tvDescription,tvNumber;
         public ImageView ivProductImage;
@@ -58,6 +62,12 @@ public class GroceryCartAdapter extends RecyclerView.Adapter<GroceryCartAdapter.
         preferenceUtils = new PreferenceUtils(context);
     }
 
+    /**
+     * Called when RecyclerView needs a new RecyclerView.ViewHolder of the given type to represent an item.
+     * @param parent The ViewGroup into which the new View will be added after it is bound to an adapter position.
+     * @param viewType The view type of the new View.
+     * @return Itemholder instance
+     */
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -66,6 +76,11 @@ public class GroceryCartAdapter extends RecyclerView.Adapter<GroceryCartAdapter.
         return new MyViewHolder(itemView);
     }
 
+    /**
+     *Called by RecyclerView to display the data at the specified position.
+     * @param holder The ViewHolder which should be updated to represent the contents of the item at the given position
+     * @param position The position of the item within the adapter's data set.
+     */
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final GroceryDo GroceryDo = AppConstants.listCartGrocery.get(position);
@@ -83,7 +98,7 @@ public class GroceryCartAdapter extends RecyclerView.Adapter<GroceryCartAdapter.
 
                 AppConstants.listCartGrocery.get(position).itemCount = AppConstants.listCartGrocery.get(position).itemCount + 1;
 //                GroceryDo.itemCount = GroceryDo.itemCount + 1;
-                holder.tvNumber.setText(""+AppConstants.listCartGrocery.get(position).itemCount);
+                holder.tvNumber.setText(""+ AppConstants.listCartGrocery.get(position).itemCount);
                 holder.tvPrice.setText("$"+(Double.parseDouble(String.format("%.2f", GroceryDo.price * GroceryDo.itemCount))));
                 listener.updateTotalPrice();
 
@@ -97,7 +112,7 @@ public class GroceryCartAdapter extends RecyclerView.Adapter<GroceryCartAdapter.
 
                 if(AppConstants.listCartGrocery.get(position).itemCount == 1) {
 
-                    for(GroceryDo GroceryDo1 : AppConstants.listGrocery){
+                    for(com.mobileapp.foodzone.model.GroceryDo GroceryDo1 : AppConstants.listGrocery){
                          if(AppConstants.listCartGrocery.get(position).id == GroceryDo1.id){
                              GroceryDo1.itemCount = 0;
                          }
@@ -109,7 +124,7 @@ public class GroceryCartAdapter extends RecyclerView.Adapter<GroceryCartAdapter.
 
                 }else if(AppConstants.listCartGrocery.get(position).itemCount > 1){
                     AppConstants.listCartGrocery.get(position).itemCount = AppConstants.listCartGrocery.get(position).itemCount - 1;
-                    holder.tvNumber.setText(""+AppConstants.listCartGrocery.get(position).itemCount);
+                    holder.tvNumber.setText(""+ AppConstants.listCartGrocery.get(position).itemCount);
                 }
                  holder.tvPrice.setText("$"+(Double.parseDouble(String.format("%.2f", GroceryDo.price * GroceryDo.itemCount))));
                  listener.updateTotalPrice();
@@ -120,6 +135,10 @@ public class GroceryCartAdapter extends RecyclerView.Adapter<GroceryCartAdapter.
 
     }
 
+    /**
+     * This method returns the count of items
+     * @return No of items
+     */
     @Override
     public int getItemCount() {
         return AppConstants.listCartGrocery.size();

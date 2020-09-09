@@ -1,8 +1,5 @@
 package com.mobileapp.foodzone.adapter;
 
-/**
- * Created by sandy on 2/7/2018.
- */
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -22,6 +19,9 @@ import com.mobileapp.foodzone.utills.PreferenceUtils;
 
 import java.util.ArrayList;
 
+/**
+ * Adapter class for grocery related items
+ */
 public class GroceryAdapter extends RecyclerView.Adapter<GroceryAdapter.MyViewHolder> /*implements Filterable*/ {
 
     private ArrayList<GroceryDo> listGroceryDos;
@@ -31,6 +31,9 @@ public class GroceryAdapter extends RecyclerView.Adapter<GroceryAdapter.MyViewHo
     private PreferenceUtils preferenceUtils;
 
 
+    /**
+     * The view that need to be st to recycler view
+     */
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView tvProductName, tvPrice, tvDescription,tvNumber;
         public ImageView ivProductImage;
@@ -57,6 +60,12 @@ public class GroceryAdapter extends RecyclerView.Adapter<GroceryAdapter.MyViewHo
         preferenceUtils = new PreferenceUtils(context);
     }
 
+    /**
+     * Called when RecyclerView needs a new RecyclerView.ViewHolder of the given type to represent an item.
+     * @param parent The ViewGroup into which the new View will be added after it is bound to an adapter position.
+     * @param viewType The view type of the new View.
+     * @return Itemholder instance
+     */
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -65,6 +74,11 @@ public class GroceryAdapter extends RecyclerView.Adapter<GroceryAdapter.MyViewHo
         return new MyViewHolder(itemView);
     }
 
+    /**
+     *Called by RecyclerView to display the data at the specified position.
+     * @param holder The ViewHolder which should be updated to represent the contents of the item at the given position
+     * @param position The position of the item within the adapter's data set.
+     */
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final GroceryDo GroceryDo = AppConstants.listGrocery.get(position);
@@ -82,7 +96,7 @@ public class GroceryAdapter extends RecyclerView.Adapter<GroceryAdapter.MyViewHo
 
                 AppConstants.listGrocery.get(position).itemCount = AppConstants.listGrocery.get(position).itemCount + 1;
 //                GroceryDo.itemCount = GroceryDo.itemCount + 1;
-                holder.tvNumber.setText(""+AppConstants.listGrocery.get(position).itemCount);
+                holder.tvNumber.setText(""+ AppConstants.listGrocery.get(position).itemCount);
 
                 int cartCount = getCartCount();
                 preferenceUtils.saveInt(PreferenceUtils.CART_COUNT,cartCount);
@@ -97,7 +111,7 @@ public class GroceryAdapter extends RecyclerView.Adapter<GroceryAdapter.MyViewHo
 
                 if(AppConstants.listGrocery.get(position).itemCount > 0){
                     AppConstants.listGrocery.get(position).itemCount = AppConstants.listGrocery.get(position).itemCount - 1;
-                    holder.tvNumber.setText(""+AppConstants.listGrocery.get(position).itemCount);
+                    holder.tvNumber.setText(""+ AppConstants.listGrocery.get(position).itemCount);
                 }
 
                 int cartCount = getCartCount();
@@ -109,15 +123,23 @@ public class GroceryAdapter extends RecyclerView.Adapter<GroceryAdapter.MyViewHo
 
     }
 
+    /**
+     * This method returns the count of items
+     * @return No of items
+     */
     @Override
     public int getItemCount() {
         return AppConstants.listGrocery.size();
     }
 
+    /**
+     * This method returns the count of items in cart
+     * @return No of items in cart
+     */
     private int getCartCount(){
 
         int cartCount = 0;
-        for(GroceryDo GroceryDo : AppConstants.listGrocery){
+        for(com.mobileapp.foodzone.model.GroceryDo GroceryDo : AppConstants.listGrocery){
             if(GroceryDo.itemCount > 0){
                 cartCount = cartCount + 1;
             }
