@@ -100,7 +100,7 @@ public class DinnerAdapter extends RecyclerView.Adapter<DinnerAdapter.MyViewHold
 
                 AppConstants.listDinner.get(position).itemCount = AppConstants.listDinner.get(position).itemCount + 1;
 //                lunchDo.itemCount = lunchDo.itemCount + 1;
-                holder.tvNumber.setText(""+ AppConstants.listDinner.get(position).itemCount);
+                holder.tvNumber.setText(""+AppConstants.listDinner.get(position).itemCount);
 
                 int cartCount = getCartCount();
                 preferenceUtils.saveInt(PreferenceUtils.CART_COUNT,cartCount);
@@ -115,7 +115,7 @@ public class DinnerAdapter extends RecyclerView.Adapter<DinnerAdapter.MyViewHold
 
                 if(AppConstants.listDinner.get(position).itemCount > 0){
                     AppConstants.listDinner.get(position).itemCount = AppConstants.listDinner.get(position).itemCount - 1;
-                    holder.tvNumber.setText(""+ AppConstants.listDinner.get(position).itemCount);
+                    holder.tvNumber.setText(""+AppConstants.listDinner.get(position).itemCount);
                 }
 
                 int cartCount = getCartCount();
