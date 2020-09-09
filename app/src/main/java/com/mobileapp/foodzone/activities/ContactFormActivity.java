@@ -10,12 +10,18 @@ import android.widget.LinearLayout;
 
 import com.foodzone.R;
 
-public class ContactFormActivity extends BaseActivity  {
+/**
+ * This class deals with contact form, how a user can contact for support.
+ */
+public class ContactFormActivity extends BaseActivity {
     private Button btnSendMessage;
     private EditText etName, etEmail, etPhoneNumber, etSubject,etMessage;
 
     LinearLayout llContactFrom;
 
+    /**
+     * Initialize with default values
+     */
     @Override
     public void initialize() {
 
@@ -57,6 +63,16 @@ public class ContactFormActivity extends BaseActivity  {
     private boolean isEmailIdValid(String email){
         return  Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
+
+    /**
+     * This method validates the contact form
+     * @param name User name
+     * @param email User email
+     * @param mobileNumber user Mobile number
+     * @param subject Reason of contact
+     * @param message actual mesage to be asked
+     * @return Returns an error message if any else returns empty string
+     */
     private String validateContactForm(String name, String email, String mobileNumber, String subject, String message) {
         String errorMsg ="";
         if(name.isEmpty()){
@@ -82,6 +98,9 @@ public class ContactFormActivity extends BaseActivity  {
         }
         return  errorMsg;
     }
+    /**
+     * Initialize with references and functionalities
+     */
     @Override
     public void initializeControls() {
         etName        = (EditText) findViewById(R.id.etName);
@@ -92,6 +111,9 @@ public class ContactFormActivity extends BaseActivity  {
 
         btnSendMessage =(Button)findViewById(R.id.btnSend);
     }
+    /**
+     * Method to define what happens when native back is pressed
+     */
     @Override
     public void onBackPressed() {
 //        Intent intent = new Intent(AboutActivity.this,MainActivity.class);

@@ -12,14 +12,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.foodzone.R;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.mobileapp.foodzone.adapter.BreakfastCartAdapter;
 import com.mobileapp.foodzone.common.AppConstants;
 import com.mobileapp.foodzone.listeners.UpdateTotalPriceListener;
 import com.mobileapp.foodzone.model.BreakfastDo;
 import com.mobileapp.foodzone.utills.PreferenceUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
+/**
+ * This class manages breakfast items added to cart
+ */
 public class BreakfastCartActivity extends BaseActivity implements UpdateTotalPriceListener {
     private boolean isFocused;
 
@@ -44,8 +52,11 @@ public class BreakfastCartActivity extends BaseActivity implements UpdateTotalPr
     int categoryId = 0;
     String imageURL = "";
     private BreakfastCartAdapter cartAdapter;
+    FirebaseFirestore firebaseFirestore;
 
-
+    /**
+     * Initialize with default values
+     */
     @Override
     public void initialize() {
         llOrders = (LinearLayout) getLayoutInflater().inflate(R.layout.lunch_cart_screen, null);
@@ -71,7 +82,7 @@ public class BreakfastCartActivity extends BaseActivity implements UpdateTotalPr
         //calculate total price.
         if(categoryId==3){
 
-            for (BreakfastDo BreakfastDo : AppConstants.listCartBreakfast) {
+            for (com.mobileapp.foodzone.model.BreakfastDo BreakfastDo : AppConstants.listCartBreakfast) {
                 productPrice = Double.parseDouble(String.format("%.2f", (productPrice + (BreakfastDo.price * BreakfastDo.itemCount))));
 
             }
@@ -100,7 +111,20 @@ public class BreakfastCartActivity extends BaseActivity implements UpdateTotalPr
                 public void onClick(View view) {
                     // new CommonBL(BreakfastCartActivity.this,BreakfastCartActivity.this).submitCart(userId, categoryId, subTotal, totalPrice, paymentType, deliveryCharges, discountCharges, serviceTax, tip,comment, device, address, transactionId, name, email, mobileNumber, cardId, transactionTag, rememberToken, addressType, orderDetails);
 //                    showLoader();
-                    showAppCompatAlert("Thank You","Order has been placed Successfully..!!","OK","","SUBMIT_CART",false);
+                    String date = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date());
+
+                    for (com.mobileapp.foodzone.model.BreakfastDo BreakfastDo : AppConstants.listCartBreakfast) {
+                        BreakfastDo.date = date;
+                        firebaseFirestore.collection("Orders")
+                                .add(BreakfastDo)
+                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    @Override
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        showAppCompatAlert("Thank You","Order has been placed Successfully..!!","OK","","SUBMIT_CART",false);
+                                    }
+                                });
+                    }
+                    //showAppCompatAlert("Thank You","Order has been placed Successfully..!!","OK","","SUBMIT_CART",false);
 
 //                    new CommonBL(BreakfastCartActivity.this, BreakfastCartActivity.this).submitCart(userId, String.valueOf(categoryId),
 //                            String.valueOf(productPrice), String.valueOf(total), "1", "0.0", String.valueOf(discount),
@@ -117,6 +141,9 @@ public class BreakfastCartActivity extends BaseActivity implements UpdateTotalPr
 
                     Intent intent = new Intent(BreakfastCartActivity.this, AddingCardActivity.class);
                     intent.putExtra("CategoryId", categoryId);
+                    intent.putExtra("type", "breakfast");
+//                    ArrayList cartData = AppConstants.listCartBreakfast;
+//                    intent.putExtra("cartData", cartData);
                     startActivity(intent);
                 }
             });
@@ -151,6 +178,9 @@ public class BreakfastCartActivity extends BaseActivity implements UpdateTotalPr
 
 
 
+    /**
+     * Initialize with references and functionalities
+     */
     @Override
     public void initializeControls() {
         tvScreenTitle.setText("Cart");
@@ -167,7 +197,7 @@ public class BreakfastCartActivity extends BaseActivity implements UpdateTotalPr
         tvSubTotal        = (TextView) findViewById(R.id.tvSubTotal);
         tvTax             = (TextView) findViewById(R.id.tvTax);
         tvTotalAmount     = (TextView) findViewById(R.id.tvTotalAmount);
-
+        firebaseFirestore = FirebaseFirestore.getInstance();
     }
 
 
@@ -192,11 +222,19 @@ public class BreakfastCartActivity extends BaseActivity implements UpdateTotalPr
 //
 //    }
 
+    /**
+     * This is an indicator that the activity became active and ready to receive input. It is on top of an activity stack and visible to user.
+     */
     @Override
     protected void onResume() {
 
         super.onResume();
     }
+
+    /**
+     * Method to override postive button functionality of an alert
+     * @param from the screen it is called from
+     */
     @Override
     public void onButtonYesClick(String from) {
         super.onButtonYesClick(from);
@@ -205,26 +243,35 @@ public class BreakfastCartActivity extends BaseActivity implements UpdateTotalPr
 
 
 
-            Intent intent = new Intent(BreakfastCartActivity.this,MainActivity.class);
+            Intent intent = new Intent(BreakfastCartActivity.this, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
 
         }
 
     }
-    //===============
+
+    /**
+     * set cart adapter to recycler view
+     * @param context Application context
+     * @param listBreakfastDos List of breakfast products
+     * @param imageURL Image URL
+     */
     private void setCartAdapter(Context context, ArrayList<BreakfastDo> listBreakfastDos, String imageURL) {
         cartAdapter = new BreakfastCartAdapter(context, BreakfastCartActivity.this, listBreakfastDos, imageURL);
         cartRecyclerView.setAdapter(cartAdapter);
     }
 
+    /**
+     * Updates total price of cart according to items added
+     */
     @Override
     public void updateTotalPrice() {
 
         productPrice = 0.00;
         if(categoryId==3){
 
-            for (BreakfastDo BreakfastDo : AppConstants.listCartBreakfast) {
+            for (com.mobileapp.foodzone.model.BreakfastDo BreakfastDo : AppConstants.listCartBreakfast) {
                 productPrice = Double.parseDouble(String.format("%.2f", (productPrice + (BreakfastDo.price * BreakfastDo.itemCount))));
 
             }
