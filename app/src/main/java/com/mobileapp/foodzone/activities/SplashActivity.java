@@ -9,10 +9,16 @@ import android.widget.RelativeLayout;
 
 import com.foodzone.R;
 
+/**
+ * This class deals with splash screen of application
+ */
 public class SplashActivity extends BaseActivity {
 
     RelativeLayout llSplash;
 
+    /**
+     * Initialize with default values
+     */
     @Override
     public void initialize() {
 
@@ -26,6 +32,9 @@ public class SplashActivity extends BaseActivity {
 
     }
 
+    /**
+     * Initialize with references and functionalities
+     */
     @Override
     public void initializeControls() {
 
