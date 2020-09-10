@@ -1,5 +1,8 @@
 package com.mobileapp.foodzone.adapter;
 
+/**
+ * Created by sandy on 2/7/2018.
+ */
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,6 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.foodzone.R;
+import com.mobileapp.foodzone.common.AppConstants;
+import com.mobileapp.foodzone.listeners.UpdateCartListener;
+import com.mobileapp.foodzone.model.BreakfastDo;
+import com.mobileapp.foodzone.utills.PreferenceUtils;
 
 import java.util.ArrayList;
 
@@ -93,7 +100,7 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.MyVi
 
                 AppConstants.listBreakfast.get(position).itemCount = AppConstants.listBreakfast.get(position).itemCount + 1;
 //                lunchDo.itemCount = lunchDo.itemCount + 1;
-                holder.tvNumber.setText(""+ AppConstants.listBreakfast.get(position).itemCount);
+                holder.tvNumber.setText(""+AppConstants.listBreakfast.get(position).itemCount);
 
                 int cartCount = getCartCount();
                 preferenceUtils.saveInt(PreferenceUtils.CART_COUNT,cartCount);
@@ -108,7 +115,7 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.MyVi
 
                 if(AppConstants.listBreakfast.get(position).itemCount > 0){
                     AppConstants.listBreakfast.get(position).itemCount = AppConstants.listBreakfast.get(position).itemCount - 1;
-                    holder.tvNumber.setText(""+ AppConstants.listBreakfast.get(position).itemCount);
+                    holder.tvNumber.setText(""+AppConstants.listBreakfast.get(position).itemCount);
                 }
 
                 int cartCount = getCartCount();

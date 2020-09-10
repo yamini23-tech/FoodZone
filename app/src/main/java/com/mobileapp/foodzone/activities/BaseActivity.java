@@ -29,8 +29,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.foodzone.R;
-import com.google.android.material.snackbar.Snackbar;
 import com.mobileapp.foodzone.adapter.MenuAdapter;
+import com.mobileapp.foodzone.common.AppConstants;
+import com.mobileapp.foodzone.model.MenuDO;
+import com.mobileapp.foodzone.utills.ActionBarDrawerToggle;
+import com.mobileapp.foodzone.utills.DrawerArrowDrawable;
+import com.mobileapp.foodzone.utills.PreferenceUtils;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -42,7 +47,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     public Toolbar toolbar;
     public LinearLayout llBody;
     public LinearLayout llFooter;
-//    public LayoutInflater inflater;
+    //    public LayoutInflater inflater;
     public TextView tvRestaurant, tvPartnerName, tvScreenTitle;
     protected Dialog dialogLoader;
     private boolean isCancelableLoader;
@@ -182,7 +187,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
         });
 
-            initialize();
+        initialize();
     }
         /*} catch (JSONException e) {
             e.printStackTrace();
@@ -244,7 +249,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         mDrawerList          = (ListView) findViewById(R.id.left_drawer);
         llshoppingCartLayout = (RelativeLayout) findViewById(R.id.llshoppingCartLayout);
         shoppingCartTotalNumber = (TextView) findViewById(R.id.shoppingCartTotalNumber);
-         llSearch           = (LinearLayout) findViewById(R.id.llSearch);
+        llSearch           = (LinearLayout) findViewById(R.id.llSearch);
         ivEtSearch             = (ImageView) findViewById(R.id.ivSearch);
         etSearch             = (EditText) findViewById(R.id.etSearch);
 
@@ -256,7 +261,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 isLoggedIn = preferenceUtils.getbooleanFromPreference(PreferenceUtils.IS_LOGIN, false);
 
                 if(isLoggedIn==true){
-                    Intent intent = new Intent(BaseActivity.this, UpdateAccountActivity.class);
+                    Intent intent = new Intent(BaseActivity.this,UpdateAccountActivity.class);
                     startActivity(intent);
                 }
 
@@ -296,7 +301,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     public void showAlert(String strMsg) {
         if (!strMsg.isEmpty()) {
-             showAppCompatAlert("Alert!",strMsg,"OK","","",true);
+            showAppCompatAlert("Alert!",strMsg,"OK","","",true);
         }
     }
 
@@ -450,7 +455,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * This method updates the cart size with current total of products
      */
     public void updateCartSize() {
-         int cartCount = preferenceUtils.getIntFromPreference(PreferenceUtils.CART_COUNT, 0);
+        int cartCount = preferenceUtils.getIntFromPreference(PreferenceUtils.CART_COUNT, 0);
 
         if (cartCount > 0) {
             shoppingCartTotalNumber.setVisibility(View.VISIBLE);
@@ -476,7 +481,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
 
         ArrayList<MenuDO> listMenu = new ArrayList<>();
-        for (int i = 0; i < AppConstants.menuTitles.length ; i++) {
+        for (int i = 0; i < AppConstants.menuTitles.length ;i++) {
             MenuDO menuDO = new MenuDO();
             menuDO.name = AppConstants.menuTitles[i];
             menuDO.icon = AppConstants.menuIcons[i];
@@ -484,7 +489,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             //if it is logged in it should be "Logged out" other wise it should be "Login/Register".
             if (i == AppConstants.menuTitles.length -1){
                 if(isLoggediIn){
-                   menuDO.name = "Logout";
+                    menuDO.name = "Logout";
                 }else{
                     menuDO.name = "Login or Register";
                     tvUser.setText("Welcome Guest");

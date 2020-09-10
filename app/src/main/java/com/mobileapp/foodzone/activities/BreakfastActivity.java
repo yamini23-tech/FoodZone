@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,6 +19,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.mobileapp.foodzone.adapter.BreakfastAdapter;
+import com.mobileapp.foodzone.common.AppConstants;
+import com.mobileapp.foodzone.listeners.UpdateCartListener;
+import com.mobileapp.foodzone.model.BreakfastDo;
+import com.mobileapp.foodzone.model.LunchDo;
+import com.mobileapp.foodzone.utills.PreferenceUtils;
 
 import java.util.ArrayList;
 
@@ -26,7 +33,7 @@ import java.util.ArrayList;
  */
 public class BreakfastActivity extends BaseActivity implements UpdateCartListener {
     private RecyclerView recycleview;
-    private com.mobileapp.foodzone.adapter.BreakfastAdapter BreakfastAdapter;
+    private BreakfastAdapter BreakfastAdapter;
     private TextView tvCartTotal, tvNumber;
     public RelativeLayout rlProceed, help;
     int categoryId = 0;
@@ -60,7 +67,7 @@ public class BreakfastActivity extends BaseActivity implements UpdateCartListene
                 AppConstants.listCartBreakfast = new ArrayList<>();
                 int cartCount = preferenceUtils.getIntFromPreference(PreferenceUtils.CART_COUNT, 0);
                 if (cartCount > 0) {
-                    for (com.mobileapp.foodzone.model.BreakfastDo BreakfastDo : AppConstants.listBreakfast) {
+                    for (BreakfastDo BreakfastDo : AppConstants.listBreakfast) {
                         if (BreakfastDo.itemCount != 0) {
                             AppConstants.listCartBreakfast.add(BreakfastDo);
                         }

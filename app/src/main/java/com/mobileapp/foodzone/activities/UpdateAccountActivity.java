@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.foodzone.R;
+import com.mobileapp.foodzone.utills.PreferenceUtils;
 
 /**
  * this class manages any updates to account

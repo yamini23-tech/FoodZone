@@ -1,7 +1,10 @@
 package com.mobileapp.foodzone.common;
 
 import com.foodzone.R;
+import com.mobileapp.foodzone.model.BreakfastDo;
 import com.mobileapp.foodzone.model.DinnerDo;
+import com.mobileapp.foodzone.model.GroceryDo;
+import com.mobileapp.foodzone.model.LunchDo;
 
 import java.util.ArrayList;
 
